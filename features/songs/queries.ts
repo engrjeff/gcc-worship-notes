@@ -4,6 +4,7 @@ export interface GetSongsParams {
   q?: string
   chord?: string
   assignee?: string
+  collectionId?: string
 }
 
 export async function getSongs(args?: GetSongsParams) {
@@ -20,6 +21,13 @@ export async function getSongs(args?: GetSongsParams) {
         some: {
           id: {
             equals: args?.assignee,
+          },
+        },
+      },
+      collections: {
+        some: {
+          id: {
+            equals: args?.collectionId,
           },
         },
       },

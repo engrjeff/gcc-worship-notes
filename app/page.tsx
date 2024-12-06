@@ -32,7 +32,7 @@ export default function HomePage({ searchParams }: BrowsePageProps) {
           <ClearBrowseFilters />
         </div>
 
-        <SuggestedCollections />
+        <SuggestedCollections activeCollectionId={searchParams?.collectionId} />
 
         <SongSearchList songsParams={searchParams} />
       </main>
