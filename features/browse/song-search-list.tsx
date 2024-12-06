@@ -36,7 +36,13 @@ export async function SongSearchList({
 
       <div className="flex items-center gap-2">
         <Link
-          href="/"
+          href={{
+            pathname: "/",
+            query: {
+              collectionId: songsParams?.collectionId ?? undefined,
+            },
+          }}
+          prefetch
           className={cn(
             buttonVariants({
               variant: "secondary",
@@ -48,7 +54,14 @@ export async function SongSearchList({
           <Music2Icon /> Songs
         </Link>
         <Link
-          href="/?view=videos"
+          href={{
+            pathname: "/",
+            query: {
+              view: "videos",
+              collectionId: songsParams?.collectionId ?? undefined,
+            },
+          }}
+          prefetch
           className={cn(
             buttonVariants({
               variant: "secondary",

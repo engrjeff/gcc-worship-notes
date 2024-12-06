@@ -18,7 +18,7 @@ export function CollectionItem({ collection }: CollectionItemProps) {
   return (
     <div className="relative">
       <Link href={`/collections/${collection.id}`} className="group" prefetch>
-        <div className="bg-muted/60 hover:bg-muted flex items-center gap-2 rounded-lg px-3 py-2 pr-16">
+        <div className="bg-muted/60 hover:bg-muted flex items-center gap-2 rounded-lg px-3 py-2.5 pr-16">
           <div className="bg-primary/20 inline-flex size-8 shrink-0 items-center justify-center rounded-full">
             <FolderIcon className="text-primary size-4" />
           </div>
@@ -26,7 +26,7 @@ export function CollectionItem({ collection }: CollectionItemProps) {
             <p className="mb-1 line-clamp-1 text-sm font-medium">
               {collection.name}
             </p>
-            <p className="text-muted-foreground text-xs leading-none capitalize">
+            <p className="text-muted-foreground text-xs capitalize leading-none">
               {collection._count.songs}
               {collection._count.songs > 1 ? " songs" : " song"} &bull;{" "}
               {formatDate(collection.createdAt)} by {collection.createdByName}

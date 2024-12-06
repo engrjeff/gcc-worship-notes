@@ -36,7 +36,7 @@ export function CollectionItemActions({
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-1.5 top-1/2 size-7 -translate-y-1/2"
+            className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-full"
           >
             <span className="sr-only">Actions</span>
             <MoreVerticalIcon className="size-4" />

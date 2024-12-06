@@ -40,7 +40,7 @@ function TeamMembersPage() {
             View, add, and manage Worship Team members.
           </p>
         </div>
-        <Button size="sm">
+        <Button>
           <UserPlusIcon /> Add Member
         </Button>
       </div>

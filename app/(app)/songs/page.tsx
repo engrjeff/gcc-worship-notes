@@ -21,11 +21,7 @@ function SongsPage() {
             View, create, and manage worship song notes.
           </p>
         </div>
-        <Link
-          href="/songs/add"
-          className={buttonVariants({ size: "sm" })}
-          prefetch
-        >
+        <Link href="/songs/add" className={buttonVariants()} prefetch>
           <PlusCircleIcon /> Add Song
         </Link>
       </div>

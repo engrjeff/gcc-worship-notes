@@ -37,7 +37,7 @@ export function CollectionFormDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size="sm">
+        <Button>
           <FolderPlusIcon /> Add Folder
         </Button>
       </DialogTrigger>
