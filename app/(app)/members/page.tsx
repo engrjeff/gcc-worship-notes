@@ -33,7 +33,7 @@ function TeamMembersPage() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h1 className="font-semibold">GCC Worship Team Members</h1>
           <p className="text-muted-foreground text-sm">

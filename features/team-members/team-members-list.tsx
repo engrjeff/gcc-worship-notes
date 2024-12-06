@@ -15,7 +15,7 @@ export async function TeamMembersList() {
   const members = await getTeamMembers()
 
   return (
-    <Table containerClass="border rounded-lg flex-none mt-6">
+    <Table containerClass="border rounded-lg flex-none my-6">
       <TableHeader>
         <TableRow className="bg-muted/30">
           <TableHead className="w-9"></TableHead>
@@ -30,8 +30,10 @@ export async function TeamMembersList() {
             <TableCell className="text-center">
               <TeamMemberIcon designation={member.designation} />
             </TableCell>
-            <TableCell>{member.name}</TableCell>
-            <TableCell>{member.designation}</TableCell>
+            <TableCell className="whitespace-nowrap">{member.name}</TableCell>
+            <TableCell className="whitespace-nowrap">
+              {member.designation}
+            </TableCell>
             <TableCell className="text-center">
               <TeamMemberRowActions id={member.id} name={member.name} />
             </TableCell>
