@@ -6,7 +6,7 @@ export async function CollectionList() {
 
   if (!collections.length)
     return (
-      <div className="p-d flex h-[300px] flex-col items-center justify-center border border-dashed">
+      <div className="mt-4 flex h-[300px] flex-col items-center justify-center border border-dashed p-4">
         <p className="text-muted-foreground text-center">
           No collections created yet. Add one now.
         </p>
