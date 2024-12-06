@@ -21,7 +21,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { MinimalTiptapEditor } from "@/components/ui/minimal-tiptap"
 import { NativeSelect } from "@/components/ui/native-select"
-import { Separator } from "@/components/ui/separator"
 import { SubmitButton } from "@/components/ui/submit-button"
 import { FaviconImage } from "@/components/shared/favicon-image"
 
@@ -201,10 +200,9 @@ export function SongForm() {
           </div>
         </fieldset>
       </form>
-      <Separator className="mb-6" />
       <YouTubeLinksPreviews
         urls={currentSources.map((s) => s.url)}
-        className="space-y-4"
+        className="grid grid-cols-1 gap-4 border-t py-6 lg:grid-cols-2"
       />
     </Form>
   )

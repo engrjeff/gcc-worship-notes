@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Song } from "@prisma/client"
-import { MoreHorizontalIcon, PencilIcon, TrashIcon } from "lucide-react"
+import { MoreVerticalIcon, PencilIcon, TrashIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -30,7 +30,7 @@ export function SongItemActions({ song }: { song: Song }) {
             className="absolute right-1.5 top-1.5 size-7 lg:top-1/2 lg:-translate-y-1/2"
           >
             <span className="sr-only">Actions</span>
-            <MoreHorizontalIcon className="size-4" />
+            <MoreVerticalIcon className="size-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

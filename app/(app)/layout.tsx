@@ -12,9 +12,9 @@ export default function AppLayout({
     <>
       <TooltipProvider>
         <Sidebar />
-        <main className="lg:pl-sidebar-width pb-12 lg:pb-0">
+        <main className="lg:pl-sidebar-width">
           <Header />
-          <div className="container mx-auto grid h-full max-w-screen-md grid-rows-1 overflow-y-auto p-4 lg:p-6">
+          <div className="container mx-auto h-full max-w-screen-md overflow-y-auto p-4 pb-20 lg:p-6">
             {children}
           </div>
           <MobileNav />

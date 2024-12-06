@@ -3,7 +3,6 @@ import type { SongCollection } from "@prisma/client"
 import { FolderIcon } from "lucide-react"
 
 import { formatDate } from "@/lib/utils"
-import { Badge } from "@/components/ui/badge"
 
 import { CollectionItemActions } from "./collection-item-actions"
 
@@ -19,22 +18,20 @@ export function CollectionItem({ collection }: CollectionItemProps) {
   return (
     <div className="relative">
       <Link href={`/collections/${collection.id}`} className="group" prefetch>
-        <div className="bg-muted/30 flex flex-col gap-2 rounded-lg border px-3 py-2 pr-16 group-hover:border-gray-600 lg:flex-row lg:items-center lg:gap-4">
-          <div className="flex flex-1 items-center gap-2">
+        <div className="bg-muted/60 hover:bg-muted flex items-center gap-2 rounded-lg px-3 py-2 pr-16">
+          <div className="bg-primary/20 inline-flex size-8 shrink-0 items-center justify-center rounded-full">
             <FolderIcon className="text-primary size-4" />
-
-            <p className="line-clamp-1 text-sm lg:max-w-[60%]">
+          </div>
+          <div className="lg:max-w-[60%]">
+            <p className="mb-1 line-clamp-1 text-sm font-medium">
               {collection.name}
             </p>
-          </div>
-          <div className="flex flex-col items-start gap-2 lg:ml-auto lg:flex-row lg:items-center">
-            <Badge variant="primary">
-              {collection._count.songs}{" "}
-              {collection._count.songs > 1 ? "songs" : "song"}
-            </Badge>
-            <p className="text-muted-foreground text-xs lg:ml-auto">
+            <p className="text-muted-foreground text-xs leading-none">
+              {collection._count.songs}
+              {collection._count.songs > 1 ? " songs" : " song"} &bull;{" "}
               {formatDate(collection.createdAt)} by {collection.createdByName}
             </p>
+            <p className="text-muted-foreground text-xs"></p>
           </div>
         </div>
       </Link>

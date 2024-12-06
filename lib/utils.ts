@@ -1,3 +1,4 @@
+import { TeamMember } from "@prisma/client"
 import { clsx, type ClassValue } from "clsx"
 import { intlFormatDistance } from "date-fns"
 import { twMerge } from "tailwind-merge"
@@ -17,4 +18,19 @@ export function getInitials(name: string) {
 export function formatDate(dateInput: number | string | Date) {
   // return format(new Date(dateInput), "MMM dd, yyyy")
   return intlFormatDistance(new Date(dateInput), new Date())
+}
+
+const memberNameMap = {
+  "Eugene Ababa": "Uge",
+  "Leslie Henoguin": "Les",
+  "Rosa Sahagun": "Rosa",
+  "Pastor John": "Pas J",
+  "Kim Lopez": "Kim",
+  "Daniel John Baja": "Daniel",
+}
+
+export function formatAssignees(assignees: TeamMember[]) {
+  return assignees
+    .map((a) => memberNameMap[a.name as keyof typeof memberNameMap])
+    .join(", ")
 }

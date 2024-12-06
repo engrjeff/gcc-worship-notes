@@ -16,7 +16,7 @@ export async function getSongCollections() {
 
 export async function getRecentCollections() {
   const collections = await prisma.songCollection.findMany({
-    take: 2,
+    take: 4,
     orderBy: {
       createdAt: "desc",
     },

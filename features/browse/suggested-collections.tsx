@@ -15,7 +15,7 @@ export async function SuggestedCollections() {
         {collections.map((collection) => (
           <li key={collection.id}>
             <Link href={`/browse/collections/${collection.id}`} prefetch>
-              <div className="bg-muted/30 hover:bg-muted flex items-center gap-4 rounded-lg border px-3 py-2 pr-12 group-hover:border-gray-600">
+              <div className="bg-muted/60 hover:bg-muted/80 flex items-center gap-4 rounded-lg px-3 py-2 pr-12 group-hover:border-gray-600">
                 <FolderIcon className="text-primary size-4" />
                 <div className="max-w-[70%] flex-1">
                   <p className="line-clamp-1 text-sm">{collection.name} </p>

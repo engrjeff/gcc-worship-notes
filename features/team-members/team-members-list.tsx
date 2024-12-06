@@ -1,3 +1,5 @@
+import { getInitials } from "@/lib/utils"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   Table,
   TableBody,
@@ -8,7 +10,6 @@ import {
 } from "@/components/ui/table"
 
 import { getTeamMembers } from "./queries"
-import { TeamMemberIcon } from "./team-member-icon"
 import { TeamMemberRowActions } from "./team-member-row-actions"
 
 export async function TeamMembersList() {
@@ -28,7 +29,12 @@ export async function TeamMembersList() {
         {members.map((member) => (
           <TableRow key={`member-row-${member.id}`}>
             <TableCell className="text-center">
-              <TeamMemberIcon designation={member.designation} />
+              <Avatar className="size-5">
+                <AvatarImage src={member.imageUrl!} alt="" />
+                <AvatarFallback className="text-[10px]">
+                  {getInitials(member.name)}
+                </AvatarFallback>
+              </Avatar>
             </TableCell>
             <TableCell className="whitespace-nowrap">{member.name}</TableCell>
             <TableCell className="whitespace-nowrap">

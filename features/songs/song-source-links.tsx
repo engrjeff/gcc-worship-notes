@@ -23,13 +23,13 @@ export function SongSourceLinks({ sources }: { sources: string[] }) {
             >
               <FaviconImage url={source} size={24} />
               <p
-                className="line-clamp-1 max-w-full font-mono text-sm"
-                style={{
-                  width: "260px",
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                }}
+                className="line-clamp-1 max-w-[75%] font-mono text-sm"
+                // style={{
+                //   width: "260px",
+                //   whiteSpace: "nowrap",
+                //   overflow: "hidden",
+                //   textOverflow: "ellipsis",
+                // }}
               >
                 {source}
               </p>

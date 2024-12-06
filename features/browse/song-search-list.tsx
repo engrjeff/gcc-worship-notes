@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { formatAssignees } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
@@ -31,7 +32,7 @@ export async function SongSearchList({
         {songs.map((song) => (
           <li key={`search-song-${song.id}`}>
             <Link href={`/browse/songs/${song.id}`} prefetch>
-              <Card className="bg-muted/50 hover:bg-muted border-none transition-colors">
+              <Card className="bg-muted/60 hover:bg-muted/80 border-none transition-colors">
                 <CardHeader className="items-start">
                   <CardTitle>
                     <h2>{song.title}</h2>
@@ -39,15 +40,15 @@ export async function SongSearchList({
                   <CardDescription>
                     Listed by {song.createdByName}
                   </CardDescription>
-                  <Badge variant="primary">Key of {song.chordKey}</Badge>
+                  <Badge variant="primary" className="normal-case">
+                    Key of {song.chordKey}
+                  </Badge>
                 </CardHeader>
                 <CardContent>
                   <h3 className="text-sm font-medium">Assignees</h3>
-                  {song.assignees.map((a) => (
-                    <p key={`${song.id}-${a.id}`} className="text-sm">
-                      {a.name}
-                    </p>
-                  ))}
+                  <p className="text-muted-foreground text-sm">
+                    {formatAssignees(song.assignees)}
+                  </p>
                 </CardContent>
               </Card>
             </Link>
