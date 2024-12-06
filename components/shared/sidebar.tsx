@@ -66,6 +66,7 @@ export function Sidebar() {
               <Link
                 key={`menu-group-item-${menuItem.label}`}
                 href={menuItem.path}
+                prefetch
                 className={cn(
                   buttonVariants({
                     size: "sm",

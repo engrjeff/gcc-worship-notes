@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button"
 export function BrowseHeader() {
   return (
     <header className="bg-background/70 container sticky top-0 z-10 mx-auto flex h-14 max-w-screen-md items-center justify-between border-b px-4 backdrop-blur-lg lg:border-none">
-      <Link href="/">
+      <Link href="/" prefetch>
         <span className="hidden items-center gap-2 font-bold lg:flex">
           <AudioWaveformIcon className="text-primary size-6" /> GCC Worship
           Notes
@@ -22,6 +22,7 @@ export function BrowseHeader() {
           <Link
             href="/songs"
             className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+            prefetch
           >
             Dashboard
           </Link>

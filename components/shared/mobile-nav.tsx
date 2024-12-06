@@ -37,6 +37,7 @@ export function MobileNav() {
           <li key={`mobile-nav-${menu.label}`}>
             <Link
               href={menu.path}
+              prefetch
               className="group flex flex-col items-center gap-1 rounded-full"
               data-active={
                 pathname === "/" && menu.path === "/"

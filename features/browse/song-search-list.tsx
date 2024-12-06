@@ -32,7 +32,7 @@ export async function SongSearchList({
           <li key={`search-song-${song.id}`}>
             <Link href={`/browse/songs/${song.id}`} prefetch>
               <Card className="bg-muted/30 hover:bg-muted border-none transition-colors">
-                <CardHeader>
+                <CardHeader className="items-start">
                   <CardTitle>
                     <h2>{song.title}</h2>
                   </CardTitle>
