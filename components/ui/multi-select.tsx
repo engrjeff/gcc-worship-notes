@@ -42,7 +42,7 @@ export function MultiSelect({
           role="combobox"
           disabled={false}
           aria-expanded={open}
-          className="active:ring-ring group h-auto w-full justify-between px-2 active:ring-1"
+          className="active:ring-ring group h-auto min-h-10 w-full justify-between px-2 active:ring-1"
         >
           {selectedIds.length > 0 ? (
             <span className="flex flex-wrap items-center gap-2">
