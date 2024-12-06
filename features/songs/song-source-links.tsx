@@ -11,7 +11,7 @@ export function SongSourceLinks({ sources }: { sources: string[] }) {
     )
 
   return (
-    <div>
+    <div className="max-w-full">
       <h2 className="mb-3 font-semibold">Sources from the Web</h2>
       <ul className="space-y-3">
         {sources.map((source, idx) => (
@@ -22,7 +22,15 @@ export function SongSourceLinks({ sources }: { sources: string[] }) {
               className="hover:bg-muted/30 group flex items-center gap-3 rounded-full border px-2.5 py-2"
             >
               <FaviconImage url={source} size={24} />
-              <p className="line-clamp-1 max-w-[75%] font-mono text-sm">
+              <p
+                className="line-clamp-1 max-w-full font-mono text-sm"
+                style={{
+                  width: "260px",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
                 {source}
               </p>
 
