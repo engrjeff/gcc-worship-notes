@@ -22,13 +22,13 @@ export function SongSourceLinks({ sources }: { sources: string[] }) {
               className="hover:bg-muted/30 group flex items-center gap-3 rounded-full border px-2.5 py-2"
             >
               <FaviconImage url={source} size={24} />
-              <p className="line-clamp-1 max-w-[90%] font-mono text-sm">
+              <p className="line-clamp-1 max-w-[75%] font-mono text-sm">
                 {source}
               </p>
 
               <ArrowRightIcon
                 size={16}
-                className="ml-auto transition-transform group-hover:translate-x-1"
+                className="ml-auto shrink-0 transition-transform group-hover:translate-x-1"
               />
             </a>
           </li>
