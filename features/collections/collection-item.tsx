@@ -18,7 +18,7 @@ interface CollectionItemProps {
 export function CollectionItem({ collection }: CollectionItemProps) {
   return (
     <div className="relative">
-      <Link href={`/collections/${collection.id}`} className="group">
+      <Link href={`/collections/${collection.id}`} className="group" prefetch>
         <div className="bg-muted/30 flex flex-col gap-2 rounded-lg border px-3 py-2 pr-16 group-hover:border-gray-600 lg:flex-row lg:items-center lg:gap-4">
           <div className="flex flex-1 items-center gap-2">
             <FolderIcon className="text-primary size-4" />

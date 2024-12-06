@@ -1,10 +1,9 @@
 import Link from "next/link"
 
-import { getInitials } from "@/lib/utils"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -31,36 +30,25 @@ export async function SongSearchList({
       <ul className="space-y-3">
         {songs.map((song) => (
           <li key={`search-song-${song.id}`}>
-            <Link href={`/browse/songs/${song.id}`}>
+            <Link href={`/browse/songs/${song.id}`} prefetch>
               <Card className="bg-muted/30 hover:bg-muted border-none transition-colors">
-                <CardHeader className="flex-row items-start">
-                  <div>
-                    <CardTitle>
-                      <h2>{song.title}</h2>
-                    </CardTitle>
-                    <CardDescription>
-                      Listed by {song.createdByName}
-                    </CardDescription>
-                    <Badge variant="primary">Key of {song.chordKey}</Badge>
-                  </div>
-                  <div className="ml-auto flex -space-x-1 overflow-hidden">
-                    {song.assignees.map((assignee) => (
-                      <Avatar
-                        key={assignee.id}
-                        className="ring-background inline-block size-6 ring-2"
-                      >
-                        <AvatarImage
-                          src={assignee.imageUrl!}
-                          alt=""
-                          className="object-contain"
-                        />
-                        <AvatarFallback className="text-xs">
-                          {getInitials(assignee.name)}
-                        </AvatarFallback>
-                      </Avatar>
-                    ))}
-                  </div>
+                <CardHeader>
+                  <CardTitle>
+                    <h2>{song.title}</h2>
+                  </CardTitle>
+                  <CardDescription>
+                    Listed by {song.createdByName}
+                  </CardDescription>
+                  <Badge variant="primary">Key of {song.chordKey}</Badge>
                 </CardHeader>
+                <CardContent>
+                  <h3 className="text-sm font-medium">Assignees</h3>
+                  {song.assignees.map((a) => (
+                    <p key={`${song.id}-${a.id}`} className="text-sm">
+                      {a.name}
+                    </p>
+                  ))}
+                </CardContent>
               </Card>
             </Link>
           </li>
