@@ -6,4 +6,13 @@ export const collectionSchema = z.object({
     .min(1, { message: "Name is required." }),
 })
 
+export const requireCollectionId = z.object({
+  id: z.string({
+    required_error: "Collection id is required.",
+  }),
+})
+
+export const updateCollectionSchema =
+  collectionSchema.merge(requireCollectionId)
+
 export type CollectionInputs = z.infer<typeof collectionSchema>

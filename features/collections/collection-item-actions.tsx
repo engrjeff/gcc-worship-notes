@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { SongCollection } from "@prisma/client"
 import {
   MoreVerticalIcon,
@@ -17,6 +16,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+import { EditCollectionFormDialog } from "./edit-collection-form"
 
 type RowAction = "add-song" | "edit" | "delete"
 
@@ -44,10 +45,8 @@ export function CollectionItemActions({
           <DropdownMenuItem onClick={() => setAction("add-song")}>
             <MusicIcon size={16} /> Add Song
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href={`/collections/${collection.id}/edit`}>
-              <PencilIcon size={16} /> Edit
-            </Link>
+          <DropdownMenuItem onClick={() => setAction("edit")}>
+            <PencilIcon size={16} /> Edit
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => setAction("delete")}
@@ -57,6 +56,16 @@ export function CollectionItemActions({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      <EditCollectionFormDialog
+        collection={collection}
+        open={action === "edit"}
+        setOpen={(isOpen) => {
+          if (!isOpen) {
+            setAction(undefined)
+          }
+        }}
+      />
     </>
   )
 }

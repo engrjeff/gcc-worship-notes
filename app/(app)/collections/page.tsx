@@ -1,9 +1,9 @@
 import { Suspense } from "react"
 import { type Metadata } from "next"
 import Link from "next/link"
+import { CollectionFormDialog } from "@/features/collections/collection-form"
 import { CollectionList } from "@/features/collections/collection-list"
 import { CollectionListSkeleton } from "@/features/collections/collection-list-skeleton"
-import { CollectionFormDialog } from "@/features/collections/CollectionForm"
 
 import {
   Breadcrumb,
