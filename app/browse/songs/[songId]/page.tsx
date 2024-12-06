@@ -53,7 +53,11 @@ async function BrowseSongDetailPage({
           <p className="text-muted-foreground mb-4 text-sm">
             Listed {formatDate(song.createdAt)} by {song.createdByName}
           </p>
-          <Badge variant="primary">Key of {song.chordKey}</Badge>
+          <Badge variant="primary">
+            {song.chordKey === "Original Key"
+              ? song.chordKey
+              : `Key of ${song.chordKey}`}
+          </Badge>
         </div>
         <div className="space-x-3 lg:ml-auto">
           <CopyLinkButton />

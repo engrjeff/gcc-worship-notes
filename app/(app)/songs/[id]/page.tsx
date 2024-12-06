@@ -78,7 +78,11 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
           <p className="text-muted-foreground mb-2 text-sm">
             Listed {formatDate(song.createdAt)} by {song.createdByName}
           </p>
-          <Badge variant="primary">Key of {song.chordKey}</Badge>
+          <Badge variant="primary">
+            {song.chordKey === "Original Key"
+              ? song.chordKey
+              : `Key of ${song.chordKey}`}
+          </Badge>
         </div>
 
         <Link

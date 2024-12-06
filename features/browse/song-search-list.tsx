@@ -76,7 +76,9 @@ export async function SongSearchList({
                       Listed by {song.createdByName}
                     </CardDescription>
                     <Badge variant="primary" className="normal-case">
-                      Key of {song.chordKey}
+                      {song.chordKey === "Original Key"
+                        ? song.chordKey
+                        : `Key of ${song.chordKey}`}
                     </Badge>
                   </CardHeader>
                   <CardContent>

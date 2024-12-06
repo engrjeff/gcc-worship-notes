@@ -23,7 +23,9 @@ export function SongListItem({
               {song.title}
             </p>
             <p className="text-muted-foreground mb-1 text-xs leading-none">
-              Key of {song.chordKey}
+              {song.chordKey === "Original Key"
+                ? song.chordKey
+                : `Key of ${song.chordKey}`}
             </p>
             <p className="text-muted-foreground text-xs">
               {formatAssignees(song.assignees)}
