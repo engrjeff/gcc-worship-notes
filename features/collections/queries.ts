@@ -24,3 +24,12 @@ export async function getRecentCollections() {
 
   return collections
 }
+
+export async function getCollectionById(id: string) {
+  const collection = await prisma.songCollection.findUnique({
+    where: { id },
+    include: { songs: true },
+  })
+
+  return collection
+}

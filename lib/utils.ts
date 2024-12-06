@@ -1,5 +1,5 @@
 import { clsx, type ClassValue } from "clsx"
-import { format } from "date-fns"
+import { intlFormatDistance } from "date-fns"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -15,5 +15,6 @@ export function getInitials(name: string) {
 }
 
 export function formatDate(dateInput: number | string | Date) {
-  return format(new Date(dateInput), "MMM dd, yyyy")
+  // return format(new Date(dateInput), "MMM dd, yyyy")
+  return intlFormatDistance(new Date(dateInput), new Date())
 }

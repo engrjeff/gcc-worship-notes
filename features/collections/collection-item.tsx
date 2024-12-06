@@ -30,7 +30,7 @@ export function CollectionItem({ collection }: CollectionItemProps) {
               </Badge>
             </div>
             <p className="text-muted-foreground text-xs">
-              Created at {formatDate(collection.createdAt)}
+              Created {formatDate(collection.createdAt)}
               {}
             </p>
           </div>

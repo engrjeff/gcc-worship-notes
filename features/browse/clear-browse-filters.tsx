@@ -23,7 +23,7 @@ export function ClearBrowseFilters() {
       className="rounded-full"
       onClick={() => setFilters(null)}
     >
-      Clear Filters <XIcon className="size-4" aria-hidden="true" />
+      Reset <XIcon className="size-4" aria-hidden="true" />
     </Button>
   )
 }

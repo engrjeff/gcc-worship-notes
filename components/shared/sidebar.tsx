@@ -58,7 +58,7 @@ export function Sidebar() {
           Notes
         </span>
       </div>
-      <nav className="flex-1">
+      <nav className="flex-1 space-y-4">
         {menuItems.map((item) => (
           <div key={`menu-group-${item.heading}`}>
             <p className="mb-2 px-4 font-semibold">{item.heading}</p>

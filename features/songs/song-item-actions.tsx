@@ -27,7 +27,7 @@ export function SongItemActions({ song }: { song: Song }) {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-1.5 top-1/2 size-7 -translate-y-1/2"
+            className="absolute right-1.5 top-1.5 size-7 lg:top-1/2 lg:-translate-y-1/2"
           >
             <span className="sr-only">Actions</span>
             <MoreHorizontalIcon className="size-4" />

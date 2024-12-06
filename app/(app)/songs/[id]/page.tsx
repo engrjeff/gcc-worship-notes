@@ -5,7 +5,7 @@ import { getSongById } from "@/features/songs/queries"
 import { SongLyrics } from "@/features/songs/song-lyrics"
 import { SongSourceLinks } from "@/features/songs/song-source-links"
 import { YouTubeLinksPreviews } from "@/features/songs/youtube-links-preview"
-import { EditIcon } from "lucide-react"
+import { ArrowLeftIcon, EditIcon } from "lucide-react"
 
 import { cn, formatDate } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -41,7 +41,7 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Breadcrumb className="mb-6">
+      <Breadcrumb className="mb-6 hidden lg:flex">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
@@ -60,17 +60,25 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
+      <div className="mb-4">
+        <Link
+          href="/songs"
+          className={cn(
+            buttonVariants({ variant: "link" }),
+            "text-foreground grow-0 px-0 lg:hidden"
+          )}
+        >
+          <ArrowLeftIcon className="size-4" />
+          Back to List
+        </Link>
+      </div>
       <div className="flex items-start">
-        <div>
-          <h1 className="text-lg font-semibold">
-            {song.title}{" "}
-            <Badge variant="chordkey" className="ml-2">
-              Key of {song.chordKey}
-            </Badge>
-          </h1>
-          <p className="text-muted-foreground mb-6 text-sm">
-            Listed on {formatDate(song.createdAt)} by {song.createdByName}
+        <div className="mb-4">
+          <h1 className="font-semibold lg:text-lg">{song.title} </h1>
+          <p className="text-muted-foreground mb-2 text-sm">
+            Listed {formatDate(song.createdAt)} by {song.createdByName}
           </p>
+          <Badge variant="primary">Key of {song.chordKey}</Badge>
         </div>
 
         <Link
@@ -85,7 +93,7 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
         </Link>
       </div>
       <h2 className="mb-3 font-semibold">Assignees</h2>
-      <ul className="flex items-center gap-3">
+      <ul className="flex flex-col gap-3 lg:flex-row lg:items-center">
         {song.assignees.map((assignee) => (
           <li key={assignee.id}>
             <div className="flex items-center gap-2">

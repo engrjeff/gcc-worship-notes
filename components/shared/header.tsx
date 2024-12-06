@@ -1,33 +1,22 @@
+import Link from "next/link"
 import { SignedIn, UserButton } from "@clerk/nextjs"
-import { AudioWaveformIcon, MenuIcon } from "lucide-react"
-
-import { Button } from "../ui/button"
-import { SearchField } from "../ui/search-field"
+import { AudioWaveformIcon } from "lucide-react"
 
 export function Header() {
   return (
-    <header className="h-16 p-3 lg:hidden">
-      <div className="bg-muted container mx-auto flex h-full max-w-screen-md items-center justify-between gap-2 rounded-full px-2">
-        <Button
-          type="button"
-          size="icon"
-          variant="ghost"
-          className="size-7 shrink-0 rounded-full"
-        >
-          <MenuIcon size={16} />
-        </Button>
-        <span className="hidden items-center gap-2 font-bold">
+    <header className="bg-background/70 container sticky top-0 z-10 mx-auto flex h-14 max-w-screen-md items-center justify-between border-b px-4 backdrop-blur-lg lg:hidden lg:border-none">
+      <Link href="/">
+        <span className="hidden items-center gap-2 font-bold lg:flex">
           <AudioWaveformIcon className="text-primary size-6" /> GCC Worship
           Notes
         </span>
-        <SearchField
-          hideIcon
-          className="bg-muted border-muted w-full rounded-full focus-visible:ring-transparent"
-        />
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </div>
+        <span className="flex items-center gap-2 text-sm font-bold lg:hidden">
+          <AudioWaveformIcon className="text-primary size-4" /> GCC WN
+        </span>
+      </Link>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
     </header>
   )
 }

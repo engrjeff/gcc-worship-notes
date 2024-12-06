@@ -14,10 +14,13 @@ interface BrowsePageProps {
 
 export default function HomePage({ searchParams }: BrowsePageProps) {
   return (
-    <div className="p-4">
+    <>
       <BrowseHeader />
+      <main className="container mx-auto max-w-screen-md space-y-6 px-4 py-6">
+        <h1 className="text-center text-xl font-semibold">
+          Welcome to GCC Worship Notes
+        </h1>
 
-      <main className="container mx-auto max-w-screen-md space-y-6 py-8">
         <SearchField
           className="h-12 rounded-full pe-9 ps-9 lg:h-12"
           placeholder="Search for worship songs..."
@@ -36,6 +39,6 @@ export default function HomePage({ searchParams }: BrowsePageProps) {
 
         <SongSearchList songsParams={searchParams} />
       </main>
-    </div>
+    </>
   )
 }

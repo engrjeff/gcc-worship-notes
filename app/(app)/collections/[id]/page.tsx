@@ -1,11 +1,11 @@
 import { type Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { EditSongForm } from "@/features/songs/edit-song-form"
-import { getSongById } from "@/features/songs/queries"
+import { getCollectionById } from "@/features/collections/queries"
 import { ArrowLeftIcon } from "lucide-react"
 
 import { cn, formatDate } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -15,23 +15,24 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 
 export async function generateMetadata({
   params,
 }: {
   params: { id: string }
 }): Promise<Metadata> {
-  const song = await getSongById(params.id)
+  const collection = await getCollectionById(params.id)
 
   return {
-    title: `Edit ${song?.title}`,
+    title: collection?.name,
   }
 }
 
-async function EditSongPage({ params }: { params: { id: string } }) {
-  const song = await getSongById(params.id)
+async function CollectionDetailPage({ params }: { params: { id: string } }) {
+  const collection = await getCollectionById(params.id)
 
-  if (!song) return notFound()
+  if (!collection) return notFound()
 
   return (
     <>
@@ -45,36 +46,44 @@ async function EditSongPage({ params }: { params: { id: string } }) {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link href="/songs">Songs</Link>
+              <Link href="/collections">Collections</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{song.title}</BreadcrumbPage>
+            <BreadcrumbPage>{collection.name}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-
-      <div>
+      <div className="mb-4">
         <Link
-          href="/songs"
+          href="/collections"
           className={cn(
             buttonVariants({ variant: "link" }),
-            "text-foreground mb-4 grow-0 px-0 lg:hidden"
+            "text-foreground grow-0 px-0 lg:hidden"
           )}
         >
           <ArrowLeftIcon className="size-4" />
           Back to List
         </Link>
-        <h1 className="font-semibold">Update {song.title}</h1>
-        <p className="text-muted-foreground text-sm">
-          Last updated {formatDate(song.updatedAt)}
-        </p>
+      </div>
+      <div className="flex items-start">
+        <div className="mb-4">
+          <h1 className="font-semibold lg:text-lg">{collection.name} </h1>
+          <p className="text-muted-foreground mb-2 text-sm">
+            Listed {formatDate(collection.createdAt)} by{" "}
+            {collection.createdByName}
+          </p>
+          <Badge variant="primary" className="ml-2">
+            {collection.songs.length}{" "}
+            {collection.songs.length > 1 ? "songs" : "song"}
+          </Badge>
+        </div>
       </div>
 
-      <EditSongForm song={song} />
+      <Separator className="my-4" />
     </>
   )
 }
 
-export default EditSongPage
+export default CollectionDetailPage

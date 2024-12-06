@@ -24,17 +24,14 @@ export async function SongSearchList({
 
   return (
     <div>
-      <h1 className="font-semibold">Worship Songs</h1>
+      <h2 className="font-semibold">Worship Songs</h2>
       <p className="text-muted-foreground mb-6 text-sm">
         Showing {songs.length} {songs.length > 1 ? "songs" : "song"}.
       </p>
       <ul className="space-y-3">
         {songs.map((song) => (
-          <li key={`song-${song.id}`}>
-            <Link
-              key={`search-song-${song.id}`}
-              href={`/browse/songs/${song.id}`}
-            >
+          <li key={`search-song-${song.id}`}>
+            <Link href={`/browse/songs/${song.id}`}>
               <Card className="bg-muted/30 hover:bg-muted border-none transition-colors">
                 <CardHeader className="flex-row items-start">
                   <div>

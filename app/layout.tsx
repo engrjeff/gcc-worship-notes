@@ -43,11 +43,12 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} h-full font-sans antialiased`}
         >
-          <NextTopLoader color="#ea580c" />
+          <NextTopLoader color="#ca8a04" />
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
-            enableSystem
+            forcedTheme="dark"
+            enableSystem={false}
             disableTransitionOnChange
           >
             <NuqsAdapter>

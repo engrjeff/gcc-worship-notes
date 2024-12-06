@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import Link from "next/link"
 import { NotFoundSongView } from "@/features/browse/not-found-song-view"
 import { getSongById } from "@/features/songs/queries"
@@ -12,6 +13,18 @@ import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CopyLinkButton } from "@/components/shared/copy-link-button"
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { songId: string }
+}): Promise<Metadata> {
+  const song = await getSongById(params.songId)
+
+  return {
+    title: song?.title,
+  }
+}
 
 async function BrowseSongDetailPage({
   params,
@@ -38,7 +51,7 @@ async function BrowseSongDetailPage({
         <div>
           <h1 className="line-clamp-1 text-lg font-semibold">{song.title} </h1>
           <p className="text-muted-foreground mb-4 text-sm">
-            Listed on {formatDate(song.createdAt)} by {song.createdByName}
+            Listed {formatDate(song.createdAt)} by {song.createdByName}
           </p>
           <Badge variant="primary">Key of {song.chordKey}</Badge>
         </div>

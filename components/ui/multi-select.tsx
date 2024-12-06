@@ -1,9 +1,10 @@
-'use client';
+"use client"
 
-import { Check, ChevronsUpDown } from 'lucide-react';
-import * as React from 'react';
+import * as React from "react"
+import { Check, ChevronsUpDown } from "lucide-react"
 
-import { Button } from '@/components/ui/button';
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -11,28 +12,27 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@/components/ui/command';
+} from "@/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { cn } from '@/lib/utils';
+} from "@/components/ui/popover"
 
 interface MultiSelectProps {
-  entityName?: string;
-  selectedIds: string[];
-  onChange: (selectedIds: string[]) => void;
-  options: Array<{ value: string; label: string }>;
+  entityName?: string
+  selectedIds: string[]
+  onChange: (selectedIds: string[]) => void
+  options: Array<{ value: string; label: string }>
 }
 
 export function MultiSelect({
   selectedIds,
   onChange,
   options,
-  entityName = 'Select from options',
+  entityName = "Select from options",
 }: MultiSelectProps) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -42,7 +42,7 @@ export function MultiSelect({
           role="combobox"
           disabled={false}
           aria-expanded={open}
-          className="active:ring-ring group w-full justify-between active:ring-1"
+          className="active:ring-ring group h-auto w-full justify-between px-2 active:ring-1"
         >
           {selectedIds.length > 0 ? (
             <span className="flex flex-wrap items-center gap-2">
@@ -73,8 +73,8 @@ export function MultiSelect({
                 ?.label.toLowerCase()
                 .includes(search.toLowerCase())
             )
-              return 1;
-            return 0;
+              return 1
+            return 0
           }}
         >
           <CommandInput placeholder={`Search ${entityName}`} />
@@ -87,18 +87,18 @@ export function MultiSelect({
                   value={option.value}
                   onSelect={(currentValue) => {
                     if (selectedIds.includes(currentValue)) {
-                      onChange(selectedIds.filter((s) => s !== currentValue));
-                      return;
+                      onChange(selectedIds.filter((s) => s !== currentValue))
+                      return
                     }
-                    onChange([...selectedIds, currentValue]);
+                    onChange([...selectedIds, currentValue])
                   }}
                 >
                   <Check
                     className={cn(
-                      'mr-2 size-4 text-emerald-500',
+                      "mr-2 size-4 text-emerald-500",
                       selectedIds.includes(option.value)
-                        ? 'opacity-100'
-                        : 'opacity-0'
+                        ? "opacity-100"
+                        : "opacity-0"
                     )}
                   />
                   {option.label}
@@ -115,5 +115,5 @@ export function MultiSelect({
         </Command>
       </PopoverContent>
     </Popover>
-  );
+  )
 }
