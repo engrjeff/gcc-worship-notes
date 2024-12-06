@@ -15,4 +15,9 @@ export const requireCollectionId = z.object({
 export const updateCollectionSchema =
   collectionSchema.merge(requireCollectionId)
 
+export const addSongsToCollectionSchema = z.object({
+  collectionId: z.string(),
+  songIds: z.string().array(),
+})
+
 export type CollectionInputs = z.infer<typeof collectionSchema>

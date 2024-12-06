@@ -8,8 +8,10 @@ import { getRecentCollections } from "../collections/queries"
 
 export async function SuggestedCollections({
   activeCollectionId,
+  viewQuery,
 }: {
   activeCollectionId?: string
+  viewQuery?: string
 }) {
   const collections = await getRecentCollections()
 
@@ -28,12 +30,13 @@ export async function SuggestedCollections({
           </p>
         ) : null}
       </div>
-      <ul className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-3 lg:gap-4 lg:grid-cols-2">
         {collections.map((collection) => (
           <li key={collection.id}>
             <CollectionItem
               collection={collection}
               isActive={activeCollectionId === collection.id}
+              viewQuery={viewQuery}
             />
           </li>
         ))}
@@ -45,12 +48,23 @@ export async function SuggestedCollections({
 function CollectionItem({
   collection,
   isActive,
+  viewQuery,
 }: {
   collection: SongCollection
   isActive: boolean
+  viewQuery?: string
 }) {
   return (
-    <Link href={isActive ? "/" : `/?collectionId=${collection.id}`} prefetch>
+    <Link
+      href={{
+        pathname: "/",
+        query: {
+          view: viewQuery,
+          collectionId: isActive ? undefined : collection.id,
+        },
+      }}
+      prefetch
+    >
       <div
         className={cn(
           "bg-muted/60 hover:bg-muted/80 flex items-center gap-4 rounded-lg px-3 py-2 pr-12 group-hover:border-gray-600",

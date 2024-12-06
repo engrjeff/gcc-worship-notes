@@ -5,6 +5,7 @@ export interface GetSongsParams {
   chord?: string
   assignee?: string
   collectionId?: string
+  view?: string
 }
 
 export async function getSongs(args?: GetSongsParams) {

@@ -26,13 +26,16 @@ export default function HomePage({ searchParams }: BrowsePageProps) {
           placeholder="Search for worship songs..."
         />
 
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 flex-wrap">
           <ChordKeyFilter />
           <AssigneesFilter />
           <ClearBrowseFilters />
         </div>
 
-        <SuggestedCollections activeCollectionId={searchParams?.collectionId} />
+        <SuggestedCollections
+          activeCollectionId={searchParams?.collectionId}
+          viewQuery={searchParams?.view}
+        />
 
         <SongSearchList songsParams={searchParams} />
       </main>

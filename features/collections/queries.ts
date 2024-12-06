@@ -9,6 +9,9 @@ export async function getSongCollections() {
         },
       },
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   })
 
   return collections

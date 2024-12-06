@@ -7,6 +7,7 @@ import prisma from "@/lib/db"
 import { authActionClient } from "@/lib/safe-action"
 
 import {
+  addSongsToCollectionSchema,
   collectionSchema,
   requireCollectionId,
   updateCollectionSchema,
@@ -88,5 +89,35 @@ export const deleteCollection = authActionClient
 
     return {
       status: "ok",
+    }
+  })
+
+export const addSongsToCollection = authActionClient
+  .metadata({ actionName: "addSongsToCollection" })
+  .schema(addSongsToCollectionSchema)
+  .action(async ({ parsedInput: { collectionId, songIds } }) => {
+    const foundCol = await prisma.songCollection.findFirst({
+      where: { id: collectionId },
+      select: { id: true },
+    })
+
+    if (!foundCol) throw new Error("Cannot find collection.")
+
+    const collection = await prisma.songCollection.update({
+      where: {
+        id: collectionId,
+      },
+      data: {
+        songs: {
+          connect: songIds.map((songId) => ({ id: songId })),
+        },
+      },
+    })
+
+    revalidatePath(`/collections`)
+    revalidatePath(`/songs`)
+
+    return {
+      collection,
     }
   })
