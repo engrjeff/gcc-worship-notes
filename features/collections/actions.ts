@@ -6,7 +6,11 @@ import { currentUser } from "@clerk/nextjs/server"
 import prisma from "@/lib/db"
 import { authActionClient } from "@/lib/safe-action"
 
-import { collectionSchema, updateCollectionSchema } from "./schema"
+import {
+  collectionSchema,
+  requireCollectionId,
+  updateCollectionSchema,
+} from "./schema"
 
 export const createCollection = authActionClient
   .metadata({ actionName: "createCollection" })
@@ -60,5 +64,29 @@ export const updateCollection = authActionClient
 
     return {
       collection,
+    }
+  })
+
+export const deleteCollection = authActionClient
+  .metadata({ actionName: "deleteCollection" })
+  .schema(requireCollectionId)
+  .action(async ({ parsedInput: { id } }) => {
+    const foundCol = await prisma.songCollection.findFirst({
+      where: { id },
+      select: { id: true },
+    })
+
+    if (!foundCol) throw new Error("Cannot find collection.")
+
+    await prisma.songCollection.delete({
+      where: {
+        id,
+      },
+    })
+
+    revalidatePath(`/collections`)
+
+    return {
+      status: "ok",
     }
   })

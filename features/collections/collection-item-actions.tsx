@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import { CollectionDeleteDialog } from "./collection-delete-dialog"
 import { EditCollectionFormDialog } from "./edit-collection-form"
 
 type RowAction = "add-song" | "edit" | "delete"
@@ -60,6 +61,17 @@ export function CollectionItemActions({
       <EditCollectionFormDialog
         collection={collection}
         open={action === "edit"}
+        setOpen={(isOpen) => {
+          if (!isOpen) {
+            setAction(undefined)
+          }
+        }}
+      />
+
+      <CollectionDeleteDialog
+        collectionId={collection.id}
+        collectionName={collection.name}
+        open={action === "delete"}
         setOpen={(isOpen) => {
           if (!isOpen) {
             setAction(undefined)
