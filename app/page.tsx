@@ -24,9 +24,6 @@ export default function HomePage({ searchParams }: BrowsePageProps) {
         <SearchField
           className="h-12 rounded-full pe-9 ps-9 lg:h-12"
           placeholder="Search for worship songs..."
-          inputProps={{
-            autoFocus: true,
-          }}
         />
 
         <div className="flex items-center justify-center gap-4">
