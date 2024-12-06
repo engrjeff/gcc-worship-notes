@@ -4,6 +4,15 @@ import { getSongCollections } from "./queries"
 export async function CollectionList() {
   const collections = await getSongCollections()
 
+  if (!collections.length)
+    return (
+      <div className="p-d flex h-[300px] flex-col items-center justify-center border border-dashed">
+        <p className="text-muted-foreground text-center">
+          No collections created yet. Add one now.
+        </p>
+      </div>
+    )
+
   return (
     <ul className="space-y-3 py-6">
       {collections.map((collection) => (
