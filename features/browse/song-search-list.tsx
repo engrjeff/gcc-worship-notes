@@ -1,5 +1,6 @@
 import Link from "next/link"
 
+import { getInitials } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -24,7 +25,7 @@ export async function SongSearchList({
   return (
     <div>
       <h1 className="font-semibold">Worship Songs</h1>
-      <p className="text-muted-foreground text-sm mb-6">
+      <p className="text-muted-foreground mb-6 text-sm">
         Showing {songs.length} {songs.length > 1 ? "songs" : "song"}.
       </p>
       <ul className="space-y-3">
@@ -57,10 +58,7 @@ export async function SongSearchList({
                           className="object-contain"
                         />
                         <AvatarFallback className="text-xs">
-                          {assignee.name
-                            .split(" ")
-                            .map((s) => s.substring(0, 1))
-                            .join("")}
+                          {getInitials(assignee.name)}
                         </AvatarFallback>
                       </Avatar>
                     ))}

@@ -36,7 +36,7 @@ function TeamMembersPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="font-semibold">GCC Worship Team Members</h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             View, add, and manage Worship Team members.
           </p>
         </div>

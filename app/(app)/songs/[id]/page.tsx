@@ -5,10 +5,9 @@ import { getSongById } from "@/features/songs/queries"
 import { SongLyrics } from "@/features/songs/song-lyrics"
 import { SongSourceLinks } from "@/features/songs/song-source-links"
 import { YouTubeLinksPreviews } from "@/features/songs/youtube-links-preview"
-import { format } from "date-fns"
 import { EditIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -70,8 +69,7 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
             </Badge>
           </h1>
           <p className="text-muted-foreground mb-6 text-sm">
-            Listed on {format(new Date(song.createdAt), "MMM dd, yyyy")} by{" "}
-            {song.createdByName}
+            Listed on {formatDate(song.createdAt)} by {song.createdByName}
           </p>
         </div>
 
@@ -79,7 +77,7 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
           href={`/songs/${song.id}/edit`}
           className={cn(
             buttonVariants({ size: "icon", variant: "secondary" }),
-            "size-7 ml-auto"
+            "ml-auto size-7"
           )}
         >
           <span className="sr-only">Edit</span>
@@ -87,7 +85,7 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
         </Link>
       </div>
       <h2 className="mb-3 font-semibold">Assignees</h2>
-      <ul className="gap-3 flex items-center">
+      <ul className="flex items-center gap-3">
         {song.assignees.map((assignee) => (
           <li key={assignee.id}>
             <div className="flex items-center gap-2">

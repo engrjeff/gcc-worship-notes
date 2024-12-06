@@ -3,8 +3,8 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { EditSongForm } from "@/features/songs/edit-song-form"
 import { getSongById } from "@/features/songs/queries"
-import { format } from "date-fns"
 
+import { formatDate } from "@/lib/utils"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -55,7 +55,7 @@ async function EditSongPage({ params }: { params: { id: string } }) {
       <div>
         <h1 className="font-semibold">Update {song.title}</h1>
         <p className="text-muted-foreground text-sm">
-          Last updated {format(new Date(song.updatedAt), "MMM dd, yyyy")}
+          Last updated {formatDate(song.updatedAt)}
         </p>
       </div>
 

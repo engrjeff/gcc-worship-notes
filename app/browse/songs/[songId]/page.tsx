@@ -4,10 +4,9 @@ import { getSongById } from "@/features/songs/queries"
 import { SongLyrics } from "@/features/songs/song-lyrics"
 import { SongSourceLinks } from "@/features/songs/song-source-links"
 import { YouTubeLinksPreviews } from "@/features/songs/youtube-links-preview"
-import { format } from "date-fns"
 import { ArrowLeftIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -35,16 +34,15 @@ async function BrowseSongDetailPage({
         <ArrowLeftIcon className="size-4" />
         Back to List
       </Link>
-      <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:justify-between">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <h1 className="text-lg font-semibold line-clamp-1">{song.title} </h1>
+          <h1 className="line-clamp-1 text-lg font-semibold">{song.title} </h1>
           <p className="text-muted-foreground mb-4 text-sm">
-            Listed on {format(new Date(song.createdAt), "MMM dd, yyyy")} by{" "}
-            {song.createdByName}
+            Listed on {formatDate(song.createdAt)} by {song.createdByName}
           </p>
           <Badge variant="primary">Key of {song.chordKey}</Badge>
         </div>
-        <div className="lg:ml-auto space-x-3">
+        <div className="space-x-3 lg:ml-auto">
           <CopyLinkButton />
         </div>
       </div>

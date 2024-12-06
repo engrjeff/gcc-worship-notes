@@ -34,7 +34,7 @@ export function CopyLyricsButton({ lyrics }: CopyButtonProps) {
           toast("Lyrics copied!", {
             position: "top-right",
             icon: <CircleCheckIcon className="size-4 text-emerald-500" />,
-            onAutoClose(toast) {
+            onAutoClose() {
               window.getSelection()?.empty()
             },
           })

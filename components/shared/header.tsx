@@ -17,7 +17,7 @@ export function Header() {
           <MenuIcon size={16} />
         </Button>
         <span className="hidden items-center gap-2 font-bold">
-          <AudioWaveformIcon className="size-6 text-primary" /> GCC Worship
+          <AudioWaveformIcon className="text-primary size-6" /> GCC Worship
           Notes
         </span>
         <SearchField

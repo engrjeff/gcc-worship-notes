@@ -2,13 +2,13 @@ import { DrumIcon, GuitarIcon, MicVocalIcon } from "lucide-react"
 
 export function TeamMemberIcon({ designation }: { designation: string }) {
   if (designation.includes("Drummer"))
-    return <DrumIcon className="size-4 text-muted-foreground ml-1" />
+    return <DrumIcon className="text-muted-foreground ml-1 size-4" />
 
   if (designation.includes("Guitarist") || designation.includes("Bassist"))
-    return <GuitarIcon className="size-4 text-muted-foreground ml-1" />
+    return <GuitarIcon className="text-muted-foreground ml-1 size-4" />
 
   if (designation.includes("Vocalist"))
-    return <MicVocalIcon className="size-4 text-muted-foreground ml-1" />
+    return <MicVocalIcon className="text-muted-foreground ml-1 size-4" />
 
   return null
 }

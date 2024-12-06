@@ -42,17 +42,17 @@ export function MultiSelect({
           role="combobox"
           disabled={false}
           aria-expanded={open}
-          className="justify-between w-full group active:ring-1 active:ring-ring"
+          className="active:ring-ring group w-full justify-between active:ring-1"
         >
           {selectedIds.length > 0 ? (
-            <span className="flex items-center flex-wrap gap-2">
+            <span className="flex flex-wrap items-center gap-2">
               {options
                 .filter((item) => selectedIds.includes(item.value))
                 .map((selected) => selected.label)
                 .map((label, idx) => (
                   <span
                     key={`value-${idx}`}
-                    className="text-xs px-1.5 py-px rounded-sm border bg-emerald-400/10 border-emerald-400/20 text-emerald-400"
+                    className="rounded-sm border border-emerald-400/20 bg-emerald-400/10 px-1.5 py-px text-xs text-emerald-400"
                   >
                     {label}
                   </span>
@@ -61,7 +61,7 @@ export function MultiSelect({
           ) : (
             <span>Select {entityName}</span>
           )}
-          <ChevronsUpDown className="ml-auto h-4 w-4 shrink-0 opacity-50" />
+          <ChevronsUpDown className="ml-auto size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-popover-trigger-width p-0">
@@ -95,7 +95,7 @@ export function MultiSelect({
                 >
                   <Check
                     className={cn(
-                      'mr-2 h-4 w-4 text-emerald-500',
+                      'mr-2 size-4 text-emerald-500',
                       selectedIds.includes(option.value)
                         ? 'opacity-100'
                         : 'opacity-0'
@@ -106,7 +106,7 @@ export function MultiSelect({
               ))}
             </CommandGroup>
 
-            <div className="p-2 ml-8 mt-4 hidden">
+            <div className="ml-8 mt-4 hidden p-2">
               <Button type="button" size="sm" onClick={() => setOpen(false)}>
                 Done
               </Button>

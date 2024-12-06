@@ -3,7 +3,7 @@ import { CopyLyricsButton } from "@/components/shared/copy-lyrics-button"
 export function SongLyrics({ lyrics }: { lyrics: string }) {
   return (
     <>
-      <div className="flex items-center justify-between mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <h2 className="font-semibold">Lyrics</h2>
         <CopyLyricsButton lyrics={lyrics} />
       </div>

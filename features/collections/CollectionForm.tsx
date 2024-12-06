@@ -104,7 +104,7 @@ function CollectionForm({ onAfterSave }: { onAfterSave: () => void }) {
             </FormItem>
           )}
         />
-        <div className="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 mt-6">
+        <div className="mt-6 flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2">
           <DialogClose asChild>
             <Button type="button" variant="ghost" disabled={action.isPending}>
               Cancel

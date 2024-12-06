@@ -25,7 +25,7 @@ export async function TeamMembersList() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {members.map((member, index) => (
+        {members.map((member) => (
           <TableRow key={`member-row-${member.id}`}>
             <TableCell className="text-center">
               <TeamMemberIcon designation={member.designation} />
