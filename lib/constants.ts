@@ -1,4 +1,5 @@
 export const chordKeyOptions = [
+  "Original Key",
   "Ab",
   "A",
   "A#",
