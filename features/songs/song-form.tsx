@@ -227,7 +227,7 @@ function SourceUrlInput({
         <FormItem>
           <FormControl>
             <div className="relative">
-              <span className="absolute inset-y-1 start-0.5 flex size-7 items-center justify-center p-px disabled:cursor-not-allowed">
+              <span className="absolute start-0.5 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center p-px disabled:cursor-not-allowed">
                 <FaviconImage url={field.value} />
               </span>
               <Input
@@ -242,7 +242,7 @@ function SourceUrlInput({
                 type="button"
                 size="icon"
                 variant="ghost"
-                className="absolute inset-y-1 end-1 size-7 disabled:cursor-not-allowed"
+                className="absolute end-1 top-1/2 size-7 -translate-y-1/2 disabled:cursor-not-allowed"
                 aria-label="delete"
                 tabIndex={-1}
                 onClick={onDelete}
