@@ -25,13 +25,15 @@ export async function getSongs(args?: GetSongsParams) {
           },
         },
       },
-      collections: {
-        some: {
-          id: {
-            equals: args?.collectionId,
-          },
-        },
-      },
+      collections: args?.collectionId
+        ? {
+            some: {
+              id: {
+                equals: args?.collectionId,
+              },
+            },
+          }
+        : undefined,
     },
     include: { assignees: true },
     orderBy: { createdAt: "desc" },

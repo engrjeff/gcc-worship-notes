@@ -26,7 +26,7 @@ export default function HomePage({ searchParams }: BrowsePageProps) {
           placeholder="Search for worship songs..."
         />
 
-        <div className="flex items-center justify-center gap-4 flex-wrap">
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <ChordKeyFilter />
           <AssigneesFilter />
           <ClearBrowseFilters />

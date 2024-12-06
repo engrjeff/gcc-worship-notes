@@ -25,8 +25,6 @@ export async function SongSearchList({
 
   if (!songs?.length) return <NotResultsFoundView query={songsParams?.q} />
 
-  const sources = songs.map((song) => song.sources).flat()
-
   return (
     <div className="space-y-4">
       <div>
