@@ -30,7 +30,7 @@ export async function SuggestedCollections({
           </p>
         ) : null}
       </div>
-      <ul className="grid grid-cols-1 gap-3 lg:gap-4 lg:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-4">
         {collections.map((collection) => (
           <li key={collection.id}>
             <CollectionItem
@@ -73,7 +73,9 @@ function CollectionItem({
           }
         )}
       >
-        <FolderIcon className="text-primary size-4" />
+        <div className="bg-primary/20 inline-flex size-8 shrink-0 items-center justify-center rounded-full">
+          <FolderIcon className="text-primary size-4" />
+        </div>
         <div className="max-w-[70%] flex-1">
           <p className="line-clamp-1 text-sm">{collection.name} </p>
           <p className="text-muted-foreground text-xs capitalize">
