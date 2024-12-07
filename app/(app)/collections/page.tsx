@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 function CollectionsPage() {
   return (
     <>
-      <Breadcrumb className="mb-6">
+      <Breadcrumb className="mb-6 hidden lg:block">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>

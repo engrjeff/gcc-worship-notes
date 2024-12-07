@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 function TeamMembersPage() {
   return (
     <>
-      <Breadcrumb className="mb-6">
+      <Breadcrumb className="mb-6 hidden lg:block">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
