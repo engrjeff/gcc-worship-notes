@@ -1,8 +1,12 @@
-import { getSongs } from "./queries"
+import { getSongs, GetSongsParams } from "./queries"
 import { SongListItem } from "./song-list-item"
 
-export async function SongList() {
-  const songs = await getSongs()
+export async function SongList({
+  songParams,
+}: {
+  songParams?: GetSongsParams
+}) {
+  const songs = await getSongs(songParams)
 
   if (!songs.length)
     return (

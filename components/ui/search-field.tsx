@@ -49,6 +49,7 @@ export function SearchField({
   return (
     <form
       className="relative w-full"
+      autoComplete="off"
       onSubmit={(e) => {
         e.preventDefault()
         const form = new FormData(e.currentTarget)

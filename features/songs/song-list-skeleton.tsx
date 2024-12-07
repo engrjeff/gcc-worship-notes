@@ -5,7 +5,7 @@ export function SongListSkeleton() {
     <ul className="space-y-3 py-6">
       {Array.from(Array(8).keys()).map((n) => (
         <li key={`skeleton-${n + 1}`}>
-          <Skeleton className="bg-muted/30 h-[98px] lg:h-[42px]" />
+          <Skeleton className="bg-muted/30 h-[72px]" />
         </li>
       ))}
     </ul>
