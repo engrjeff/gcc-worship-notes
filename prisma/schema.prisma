@@ -34,7 +34,6 @@ model Song {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@unique([title, chordKey]) // title-chordKey must be unique
   @@index([title])
   @@index([createdBy])
 }
