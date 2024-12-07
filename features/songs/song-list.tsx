@@ -8,6 +8,15 @@ export async function SongList({
 }) {
   const songs = await getSongs(songParams)
 
+  if (!songs.length && songParams?.q)
+    return (
+      <div className="mt-4 flex h-[300px] flex-col items-center justify-center border border-dashed p-4">
+        <p className="text-muted-foreground text-center">
+          {`No songs found for "${songParams.q}"`}
+        </p>
+      </div>
+    )
+
   if (!songs.length)
     return (
       <div className="mt-4 flex h-[300px] flex-col items-center justify-center border border-dashed p-4">
