@@ -80,10 +80,9 @@ export function DownloadLyricsButton({ songTitle }: { songTitle: string }) {
 
         const jsPDF = (await import("jspdf")).jsPDF
 
-        const doc = new jsPDF()
+        const doc = new jsPDF("p", "mm", "a4")
 
-        doc.text(toDownload, 10, 10)
-        doc.save(`${songTitle}.pdf`)
+        doc.setFontSize(8).text(toDownload, 10, 10).save(`${songTitle}.pdf`)
 
         toast("File downloaded!", {
           position: "bottom-center",
