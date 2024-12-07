@@ -49,10 +49,10 @@ export function SongDeleteDialog({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogContent>
-        <AlertDialogHeader>
+        <AlertDialogHeader className="text-left">
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete <br />
+            This action cannot be undone. This will permanently delete{" "}
             <span className="text-foreground text-center font-medium">
               {songTitle}
             </span>

@@ -27,7 +27,7 @@ export async function SongList({
     )
 
   return (
-    <ul className="space-y-3 py-6">
+    <ul className="space-y-3 py-4 pb-6">
       {songs.map((song) => (
         <li key={song.id}>
           <SongListItem song={song} />
