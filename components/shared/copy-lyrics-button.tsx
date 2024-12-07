@@ -46,7 +46,7 @@ export function CopyLyricsButton({ lyrics }: CopyButtonProps) {
   return (
     <Button onClick={handleCopy} size="sm" variant="secondary">
       <CopyIcon size={16} />
-      Copy Lyrics
+      Copy
     </Button>
   )
 }

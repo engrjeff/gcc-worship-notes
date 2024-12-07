@@ -129,7 +129,7 @@ async function SongDetailPage({ params }: { params: { id: string } }) {
             <TabsTrigger value="sources">Sources</TabsTrigger>
           </TabsList>
           <TabsContent value="lyrics" className="py-4">
-            <SongLyrics lyrics={song.lyrics} />
+            <SongLyrics lyrics={song.lyrics} songTitle={song.title} />
           </TabsContent>
           <TabsContent value="sources" className="py-4">
             <SongSourceLinks sources={song.sources} />
