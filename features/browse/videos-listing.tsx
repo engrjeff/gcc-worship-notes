@@ -45,7 +45,7 @@ export function VideosListing({ songs }: { songs: Song[] }) {
         <li key={video.videoId + "-" + idx + 1}>
           <YouTube videoId={video.videoId} />
           <div className="py-4">
-            <h3 className="font-semibold line-clamp-1">{video.song.title}</h3>
+            <h3 className="line-clamp-1 font-semibold">{video.song.title}</h3>
             <p className="text-muted-foreground text-sm">
               Listed {formatDate(video.song.createdAt)}
             </p>
