@@ -40,6 +40,7 @@ export async function SongSearchList({
             pathname: "/",
             query: {
               collectionId: songsParams?.collectionId ?? undefined,
+              q: songsParams?.q ?? undefined,
             },
           }}
           prefetch
@@ -59,6 +60,7 @@ export async function SongSearchList({
             query: {
               view: "videos",
               collectionId: songsParams?.collectionId ?? undefined,
+              q: songsParams?.q ?? undefined,
             },
           }}
           prefetch
