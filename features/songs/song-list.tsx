@@ -19,7 +19,7 @@ export async function SongList({
 
   if (!songs.length)
     return (
-      <div className="mt-4 flex h-[300px] flex-col items-center justify-center border border-dashed p-4">
+      <div className="mt-4 flex h-[300px] flex-col items-center justify-center rounded-lg border border-dashed p-4">
         <p className="text-muted-foreground text-center">
           No songs listed yet. Add one now.
         </p>

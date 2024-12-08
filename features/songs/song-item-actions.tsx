@@ -118,7 +118,6 @@ export function SongItemActions({ song }: { song: Song }) {
                 >
                   <CommandInput
                     placeholder="Search collection"
-                    autoFocus={true}
                     className="h-9"
                   />
                   <CommandList>
@@ -231,7 +230,6 @@ export function SongItemActions({ song }: { song: Song }) {
                 >
                   <CommandInput
                     placeholder="Search collection"
-                    autoFocus={true}
                     className="h-9"
                   />
                   <CommandList className="py-4">

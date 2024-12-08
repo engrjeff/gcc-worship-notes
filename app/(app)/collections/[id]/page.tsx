@@ -2,6 +2,7 @@ import { type Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getCollectionById } from "@/features/collections/queries"
+import { SongListItem } from "@/features/songs/song-list-item"
 import { ArrowLeftIcon } from "lucide-react"
 
 import { cn, formatDate } from "@/lib/utils"
@@ -74,7 +75,7 @@ async function CollectionDetailPage({ params }: { params: { id: string } }) {
             Listed {formatDate(collection.createdAt)} by{" "}
             {collection.createdByName}
           </p>
-          <Badge variant="primary" className="ml-2">
+          <Badge variant="primary">
             {collection.songs.length}{" "}
             {collection.songs.length > 1 ? "songs" : "song"}
           </Badge>
@@ -82,6 +83,26 @@ async function CollectionDetailPage({ params }: { params: { id: string } }) {
       </div>
 
       <Separator className="my-4" />
+
+      <div className="space-y-2">
+        <h2 className="font-semibold">Songs</h2>
+
+        {!collection.songs?.length ? (
+          <div className="mt-4 flex h-[300px] flex-col items-center justify-center rounded-lg border border-dashed p-4">
+            <p className="text-muted-foreground text-center">
+              No songs listed yet. Add one now.
+            </p>
+          </div>
+        ) : (
+          <ul className="space-y-3 py-4 pb-6">
+            {collection.songs.map((song) => (
+              <li key={song.id}>
+                <SongListItem song={song} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </>
   )
 }

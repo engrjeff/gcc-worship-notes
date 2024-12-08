@@ -31,7 +31,7 @@ export async function getRecentCollections() {
 export async function getCollectionById(id: string) {
   const collection = await prisma.songCollection.findUnique({
     where: { id },
-    include: { songs: true },
+    include: { songs: { include: { assignees: true } } },
   })
 
   return collection
