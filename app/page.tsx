@@ -22,7 +22,7 @@ export default function HomePage({ searchParams }: BrowsePageProps) {
         </h1>
 
         <SearchField
-          className="h-12 rounded-full pe-9 ps-9 lg:h-12"
+          className="bg-muted/20 h-12 rounded-full pe-9 ps-9 lg:h-12"
           placeholder="Search for worship songs..."
           inputProps={{ defaultValue: searchParams?.q }}
         />

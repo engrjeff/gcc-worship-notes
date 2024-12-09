@@ -6,6 +6,7 @@ export interface GetSongsParams {
   assignee?: string
   collectionId?: string
   view?: string
+  tag?: string
 }
 
 export async function getSongs(args?: GetSongsParams) {
@@ -32,6 +33,11 @@ export async function getSongs(args?: GetSongsParams) {
                 equals: args?.collectionId,
               },
             },
+          }
+        : undefined,
+      tags: args?.tag
+        ? {
+            has: args.tag,
           }
         : undefined,
     },

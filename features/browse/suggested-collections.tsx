@@ -59,7 +59,7 @@ function CollectionItem({
       href={{
         pathname: "/",
         query: {
-          view: viewQuery,
+          ...(viewQuery && { view: viewQuery }),
           collectionId: isActive ? undefined : collection.id,
         },
       }}

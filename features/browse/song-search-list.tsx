@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button"
 
 import { getSongs, GetSongsParams } from "../songs/queries"
 import { NotResultsFoundView } from "./no-results-found-view"
+import { SongTags } from "./song-tags"
 import { VideosListing } from "./videos-listing"
 
 export async function SongSearchList({
@@ -67,6 +68,9 @@ export async function SongSearchList({
           <PlayIcon /> Videos
         </Link>
       </div>
+
+      <SongTags tagQuery={songsParams?.tag} viewQuery={songsParams?.view} />
+
       {songsParams?.view === "videos" ? (
         <VideosListing songs={songs} />
       ) : (
