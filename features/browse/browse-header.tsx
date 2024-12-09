@@ -31,6 +31,16 @@ export function BrowseHeader() {
       </SignedIn>
       <SignedOut>
         <div className="ml-auto flex items-center gap-4">
+          <a
+            href="mailto:jeffsegoviadev@gmail.com?subject=Request Access to GCC Worship Notes&body=Hi Jeff, please grant me access to GCC Worship notes."
+            className={cn(
+              buttonVariants({ size: "sm", variant: "secondary" }),
+              "rounded-full border"
+            )}
+          >
+            Request Access
+          </a>
+
           <Link
             href="/sign-in"
             className={cn(buttonVariants({ size: "sm" }), "rounded-full")}
