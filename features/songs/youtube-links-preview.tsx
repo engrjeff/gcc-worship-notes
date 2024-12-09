@@ -1,5 +1,6 @@
 "use client"
 
+import { getYouTubeVideoIds } from "@/lib/utils"
 import { YouTube } from "@/components/ui/youtube"
 
 export function YouTubeLinksPreviews({
@@ -9,27 +10,7 @@ export function YouTubeLinksPreviews({
   urls: string[]
   className?: string
 }) {
-  const youtubeVideoIds = urls
-    .map((u) => {
-      try {
-        if (!u.includes("youtube.com")) return false
-
-        const parsedUrl = new URL(u)
-
-        const domain = parsedUrl.hostname
-
-        if (!domain.includes("youtube.com")) return false
-
-        const videoId = parsedUrl.searchParams.get("v")
-
-        if (!videoId) return false
-
-        return videoId
-      } catch {
-        return false
-      }
-    })
-    .filter(Boolean)
+  const youtubeVideoIds = getYouTubeVideoIds(urls)
 
   if (!youtubeVideoIds.length) return null
 

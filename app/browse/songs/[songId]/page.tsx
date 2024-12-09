@@ -7,11 +7,12 @@ import { SongSourceLinks } from "@/features/songs/song-source-links"
 import { YouTubeLinksPreviews } from "@/features/songs/youtube-links-preview"
 import { ArrowLeftIcon } from "lucide-react"
 
-import { cn, formatDate } from "@/lib/utils"
+import { cn, formatDate, getYouTubeVideoIds } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { YouTube } from "@/components/ui/youtube"
 import { CopyLinkButton } from "@/components/shared/copy-link-button"
 
 export async function generateMetadata({
@@ -34,6 +35,8 @@ async function BrowseSongDetailPage({
   const song = await getSongById(params.songId)
 
   if (!song) return <NotFoundSongView />
+
+  const youtubeVideoIds = getYouTubeVideoIds(song.sources)
 
   return (
     <>
@@ -72,6 +75,12 @@ async function BrowseSongDetailPage({
             <TabsTrigger value="sources">Sources</TabsTrigger>
           </TabsList>
           <TabsContent value="lyrics" className="py-4">
+            {youtubeVideoIds.at(0) ? (
+              <YouTube
+                videoId={youtubeVideoIds.at(0) as string}
+                className="mb-6"
+              />
+            ) : null}
             <SongLyrics lyrics={song.lyrics} songTitle={song.title} />
           </TabsContent>
           <TabsContent value="sources" className="py-4">

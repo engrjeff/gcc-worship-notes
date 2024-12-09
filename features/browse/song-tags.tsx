@@ -65,19 +65,13 @@ export function SongTags({
       const currentScrollPos =
         scrollableElement.scrollLeft + scrollableElement.clientWidth
 
-      if (currentScrollPos >= scrollableElement.scrollWidth) {
+      if (currentScrollPos >= scrollableElement.scrollWidth - 20) {
         setShownArrow("left")
       } else if (currentScrollPos === scrollableElement.clientWidth) {
         setShownArrow("right")
       } else {
         setShownArrow("middle")
       }
-
-      // if (scrollableElement.scrollLeft === 0) {
-      //   setShownArrow("right")
-      // } else {
-      //   setShownArrow("left")
-      // }
     }
 
     scrollableElement.addEventListener("scrollend", updateArrows)
@@ -93,7 +87,10 @@ export function SongTags({
         "[data-radix-scroll-area-viewport]"
       ) as HTMLElement
       if (scrollableElement) {
-        const scrollAmount = scrollableElement.clientWidth - 400 // Adjust this value to change scroll distance
+        const scrollAmount =
+          scrollableElement.clientWidth - 200 < scrollableElement.clientWidth
+            ? 200
+            : scrollableElement.clientWidth - 200 // Adjust this value to change scroll distance
         const currentScroll = scrollableElement.scrollLeft
         const newScroll =
           direction === "left"

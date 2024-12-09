@@ -34,3 +34,29 @@ export function formatAssignees(assignees: TeamMember[]) {
     .map((a) => memberNameMap[a.name as keyof typeof memberNameMap])
     .join(", ")
 }
+
+export function getYouTubeVideoIds(urls: string[]) {
+  const youtubeVideoIds = urls
+    .map((u) => {
+      try {
+        if (!u.includes("youtube.com")) return false
+
+        const parsedUrl = new URL(u)
+
+        const domain = parsedUrl.hostname
+
+        if (!domain.includes("youtube.com")) return false
+
+        const videoId = parsedUrl.searchParams.get("v")
+
+        if (!videoId) return false
+
+        return videoId
+      } catch {
+        return false
+      }
+    })
+    .filter(Boolean)
+
+  return youtubeVideoIds
+}

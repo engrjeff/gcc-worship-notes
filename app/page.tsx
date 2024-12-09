@@ -16,7 +16,7 @@ export default function HomePage({ searchParams }: BrowsePageProps) {
   return (
     <>
       <BrowseHeader />
-      <main className="container mx-auto max-w-screen-md space-y-6 px-4 py-6">
+      <main className="container mx-auto mt-14 max-w-screen-md space-y-6 px-4 py-6">
         <h1 className="text-center text-xl font-semibold">
           Welcome to GCC Worship Notes
         </h1>

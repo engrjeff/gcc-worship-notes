@@ -198,6 +198,7 @@ export function SongItemActions({ song }: { song: Song }) {
               modal={false}
               open={nestedOpen}
               onOpenChange={setNestedOpen}
+              dismissible={false}
             >
               <DrawerTrigger asChild>
                 <Button
