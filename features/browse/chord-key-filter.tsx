@@ -25,7 +25,7 @@ export function ChordKeyFilter() {
       value={chordQuery}
       onValueChange={(val) => setChordQuery(val === "reset" ? "" : val)}
     >
-      <SelectTrigger className="bg-muted/60 text-secondary-foreground hover:bg-muted relative w-[120px] rounded-full border-none ps-9 font-medium shadow-sm">
+      <SelectTrigger className="bg-muted/60 text-secondary-foreground hover:bg-muted relative w-min rounded-full border-none ps-9 font-medium shadow-sm">
         <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 group-has-[[disabled]]:opacity-50">
           <HashIcon size={16} strokeWidth={2} aria-hidden="true" />
         </div>
