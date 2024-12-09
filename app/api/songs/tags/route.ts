@@ -28,7 +28,6 @@ export async function GET() {
           s.tags.map((t) => (properWords.includes(t) ? t : t.toLowerCase()))
         )
         .flat()
-        .slice(0, 20)
     )
     return NextResponse.json(Array.from(tags))
   } catch (error) {

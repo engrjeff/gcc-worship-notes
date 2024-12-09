@@ -17,13 +17,13 @@ export function SongTags({
   tagQuery?: string
   viewQuery?: string
 }) {
-  console.log(tagQuery)
-
   const songTagsQuery = useSongTags()
 
   const scrollAreaRef = React.useRef<HTMLDivElement>(null)
 
-  const [shownArrow, setShownArrow] = React.useState<"left" | "right">("right")
+  const [shownArrow, setShownArrow] = React.useState<
+    "left" | "right" | "middle"
+  >("right")
 
   React.useEffect(() => {
     if (!scrollAreaRef.current) return
@@ -44,7 +44,7 @@ export function SongTags({
     // focus the default active tag
     if (activeTag.offsetLeft > scrollableElement.clientWidth - 100) {
       scrollableElement.scrollTo({
-        left: activeTag.offsetLeft,
+        left: activeTag.offsetLeft - 100,
         behavior: "smooth",
       })
 
@@ -62,11 +62,22 @@ export function SongTags({
     if (!scrollableElement) return
 
     function updateArrows() {
-      if (scrollableElement.scrollLeft === 0) {
+      const currentScrollPos =
+        scrollableElement.scrollLeft + scrollableElement.clientWidth
+
+      if (currentScrollPos >= scrollableElement.scrollWidth) {
+        setShownArrow("left")
+      } else if (currentScrollPos === scrollableElement.clientWidth) {
         setShownArrow("right")
       } else {
-        setShownArrow("left")
+        setShownArrow("middle")
       }
+
+      // if (scrollableElement.scrollLeft === 0) {
+      //   setShownArrow("right")
+      // } else {
+      //   setShownArrow("left")
+      // }
     }
 
     scrollableElement.addEventListener("scrollend", updateArrows)
@@ -74,7 +85,7 @@ export function SongTags({
     return () => {
       scrollableElement.removeEventListener("scrollend", updateArrows)
     }
-  }, [])
+  }, [songTagsQuery.data])
 
   const scroll = (direction: "left" | "right") => {
     if (scrollAreaRef.current) {
@@ -82,7 +93,7 @@ export function SongTags({
         "[data-radix-scroll-area-viewport]"
       ) as HTMLElement
       if (scrollableElement) {
-        const scrollAmount = 700 // Adjust this value to change scroll distance
+        const scrollAmount = scrollableElement.clientWidth - 400 // Adjust this value to change scroll distance
         const currentScroll = scrollableElement.scrollLeft
         const newScroll =
           direction === "left"
@@ -90,16 +101,9 @@ export function SongTags({
             : currentScroll + scrollAmount
 
         scrollableElement.scrollTo({
-          left: newScroll - 10,
+          left: newScroll,
           behavior: "smooth",
         })
-
-        if (direction === "left") {
-          setShownArrow("right")
-        }
-        if (direction === "right") {
-          setShownArrow("left")
-        }
       }
     }
   }
@@ -112,7 +116,7 @@ export function SongTags({
             {Array.from(Array(10).keys())?.map((n) => (
               <Skeleton
                 key={`loading-song-tag-${n}`}
-                className="w-20 h-7 animate-pulse bg-muted/80 mr-2 last:mr-0"
+                className="bg-muted/80 mr-2 h-7 w-20 shrink-0 animate-pulse last:mr-0"
               />
             ))}
           </div>
