@@ -14,6 +14,7 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,6 +24,7 @@ import { Input } from "@/components/ui/input"
 import { MinimalTiptapEditor } from "@/components/ui/minimal-tiptap"
 import { NativeSelect } from "@/components/ui/native-select"
 import { SubmitButton } from "@/components/ui/submit-button"
+import { TagsInput } from "@/components/ui/tags-input"
 import { FaviconImage } from "@/components/shared/favicon-image"
 
 import { updateSongNote } from "./actions"
@@ -43,6 +45,7 @@ export function EditSongForm({ song }: EditSongFormProps) {
     lyrics: song.lyrics,
     assignees: song.assignees.map((a) => ({ id: a.id })),
     sources: song.sources.map((s) => ({ url: s })),
+    tags: song.tags.map((t) => ({ value: t })),
   }
 
   const form = useForm<SongInputs>({
@@ -136,6 +139,34 @@ export function EditSongForm({ song }: EditSongFormProps) {
                     onValueChange={field.onChange}
                   />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="tags"
+            render={({ field }) => (
+              <FormItem className="space-y-0">
+                <FormLabel>
+                  Tags{" "}
+                  <span className="text-muted-foreground text-xs">
+                    (optiona)
+                  </span>
+                </FormLabel>
+                <FormDescription className="pb-2">
+                  Useful for filtering songs.
+                </FormDescription>
+                <FormControl>
+                  <TagsInput
+                    placeholder="e.g. holiness, cross, worthy"
+                    ref={field.ref}
+                    value={field.value ?? []}
+                    onValueChange={field.onChange}
+                  />
+                </FormControl>
+
                 <FormMessage />
               </FormItem>
             )}

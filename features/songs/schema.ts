@@ -12,6 +12,7 @@ export const songSchema = z.object({
     .min(10, { message: "Lyrics is required." }),
   chordKey: z.string(),
   sources: z.array(z.object({ url: z.string().url() })),
+  tags: z.array(z.object({ value: z.string() })).optional(),
 })
 
 export const requireSongId = z.object({
