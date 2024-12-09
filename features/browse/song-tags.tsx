@@ -90,7 +90,7 @@ export function SongTags({
             : currentScroll + scrollAmount
 
         scrollableElement.scrollTo({
-          left: newScroll,
+          left: newScroll - 10,
           behavior: "smooth",
         })
 
