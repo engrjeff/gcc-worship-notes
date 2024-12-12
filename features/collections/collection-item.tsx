@@ -26,7 +26,7 @@ export function CollectionItem({ collection }: CollectionItemProps) {
             <p className="mb-1 line-clamp-1 text-sm font-medium">
               {collection.name}
             </p>
-            <p className="text-muted-foreground text-xs capitalize leading-none">
+            <p className="text-muted-foreground text-xs leading-none">
               {collection._count.songs}
               {collection._count.songs > 1 ? " songs" : " song"} &bull;{" "}
               {formatDate(collection.createdAt)} by {collection.createdByName}

@@ -10,6 +10,8 @@ export function VideosListing({ songs }: { songs: Song[] }) {
     .map((song) => song.sources.map((src) => ({ source: src, song })))
     .flat()
 
+  const alreadyHere: string[] = []
+
   const youtubeVideoIds = sources
     .map((src) => {
       try {
@@ -26,6 +28,10 @@ export function VideosListing({ songs }: { songs: Song[] }) {
         const videoId = parsedUrl.searchParams.get("v")
 
         if (!videoId) return false
+
+        if (alreadyHere.includes(videoId)) return false
+
+        alreadyHere.push(videoId)
 
         return {
           videoId,

@@ -78,7 +78,7 @@ function CollectionItem({
         </div>
         <div className="max-w-[70%] flex-1">
           <p className="line-clamp-1 text-sm">{collection.name} </p>
-          <p className="text-muted-foreground text-xs capitalize">
+          <p className="text-muted-foreground text-xs">
             {formatDate(collection.createdAt)} by {collection.createdByName}
           </p>
         </div>

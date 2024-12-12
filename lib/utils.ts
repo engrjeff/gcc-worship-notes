@@ -17,7 +17,7 @@ export function getInitials(name: string) {
 
 export function formatDate(dateInput: number | string | Date) {
   // return format(new Date(dateInput), "MMM dd, yyyy")
-  return intlFormatDistance(new Date(dateInput), new Date())
+  return intlFormatDistance(new Date(dateInput), new Date(), { style: "short" })
 }
 
 const memberNameMap = {
@@ -36,27 +36,30 @@ export function formatAssignees(assignees: TeamMember[]) {
 }
 
 export function getYouTubeVideoIds(urls: string[]) {
-  const youtubeVideoIds = urls
-    .map((u) => {
-      try {
-        if (!u.includes("youtube.com")) return false
+  const youtubeVideoIds =
+    urls
+      .map((u) => {
+        try {
+          if (!u.includes("youtube.com")) return false
 
-        const parsedUrl = new URL(u)
+          const parsedUrl = new URL(u)
 
-        const domain = parsedUrl.hostname
+          const domain = parsedUrl.hostname
 
-        if (!domain.includes("youtube.com")) return false
+          if (!domain.includes("youtube.com")) return false
 
-        const videoId = parsedUrl.searchParams.get("v")
+          const videoId = parsedUrl.searchParams.get("v")
 
-        if (!videoId) return false
+          if (!videoId) return false
 
-        return videoId
-      } catch {
-        return false
-      }
-    })
-    .filter(Boolean)
+          return videoId
+        } catch {
+          return false
+        }
+      })
+      .filter(Boolean) ?? []
 
-  return youtubeVideoIds
+  const unique = Array.from(new Set(youtubeVideoIds))
+
+  return unique as string[]
 }
