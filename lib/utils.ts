@@ -17,7 +17,9 @@ export function getInitials(name: string) {
 
 export function formatDate(dateInput: number | string | Date) {
   // return format(new Date(dateInput), "MMM dd, yyyy")
-  return intlFormatDistance(new Date(dateInput), new Date(), { style: "short" })
+  return intlFormatDistance(new Date(dateInput), new Date(), {
+    style: "narrow",
+  })
 }
 
 const memberNameMap = {
