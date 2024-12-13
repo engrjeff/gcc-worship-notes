@@ -42,7 +42,7 @@ export async function getSongs(args?: GetSongsParams) {
         : undefined,
     },
     include: { assignees: true },
-    orderBy: { createdAt: "desc" },
+    orderBy: { title: "asc" },
   })
 
   return songs
