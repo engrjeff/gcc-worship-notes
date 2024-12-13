@@ -1,8 +1,12 @@
 import { CollectionItem } from "./collection-item"
-import { getSongCollections } from "./queries"
+import { GetCollectionsParams, getSongCollections } from "./queries"
 
-export async function CollectionList() {
-  const collections = await getSongCollections()
+export async function CollectionList({
+  params,
+}: {
+  params?: GetCollectionsParams
+}) {
+  const collections = await getSongCollections(params)
 
   if (!collections.length)
     return (
@@ -14,7 +18,7 @@ export async function CollectionList() {
     )
 
   return (
-    <ul className="space-y-3 py-6">
+    <ul className="space-y-3 py-2">
       {collections.map((collection) => (
         <li key={collection.id}>
           <CollectionItem collection={collection} />

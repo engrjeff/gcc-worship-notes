@@ -4,6 +4,8 @@ import Link from "next/link"
 import { CollectionFormDialog } from "@/features/collections/collection-form"
 import { CollectionList } from "@/features/collections/collection-list"
 import { CollectionListSkeleton } from "@/features/collections/collection-list-skeleton"
+import { CollectionSort } from "@/features/collections/collection-sort"
+import { GetCollectionsParams } from "@/features/collections/queries"
 
 import {
   Breadcrumb,
@@ -13,12 +15,17 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { SearchField } from "@/components/ui/search-field"
 
 export const metadata: Metadata = {
   title: "Collections",
 }
 
-function CollectionsPage() {
+function CollectionsPage({
+  searchParams,
+}: {
+  searchParams?: GetCollectionsParams
+}) {
   return (
     <>
       <Breadcrumb className="mb-6 hidden lg:block">
@@ -44,8 +51,16 @@ function CollectionsPage() {
         <CollectionFormDialog />
       </div>
 
+      <div>
+        <SearchField
+          className="bg-muted/60 my-4 border-none lg:h-10"
+          placeholder="Search collections"
+        />
+        <CollectionSort />
+      </div>
+
       <Suspense fallback={<CollectionListSkeleton />}>
-        <CollectionList />
+        <CollectionList params={searchParams} />
       </Suspense>
     </>
   )

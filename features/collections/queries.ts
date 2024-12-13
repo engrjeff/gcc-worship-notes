@@ -1,7 +1,22 @@
 import prisma from "@/lib/db"
 
-export async function getSongCollections() {
+export interface GetCollectionsParams {
+  q?: string
+  sort?: string
+  order?: string
+}
+
+export async function getSongCollections(args?: GetCollectionsParams) {
+  const sortBy = args?.sort ? args.sort : "name"
+  const orderBy = args?.order ? args.order : "asc"
+
   const collections = await prisma.songCollection.findMany({
+    where: {
+      name: {
+        contains: args?.q,
+        mode: "insensitive",
+      },
+    },
     include: {
       _count: {
         select: {
@@ -10,7 +25,7 @@ export async function getSongCollections() {
       },
     },
     orderBy: {
-      createdAt: "desc",
+      [sortBy]: orderBy,
     },
   })
 
