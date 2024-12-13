@@ -38,8 +38,8 @@ export function CollectionSort() {
       >
         <option value="name-asc">Name A-Z</option>
         <option value="name-desc">Name Z-A</option>
-        <option value="createdAt-desc">Oldest</option>
-        <option value="createdAt-asc">Newest</option>
+        <option value="createdAt-asc">Oldest</option>
+        <option value="createdAt-desc">Newest</option>
         <option value="updatedAt-asc">Last modified</option>
       </select>
     </div>
